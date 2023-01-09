@@ -1,0 +1,68 @@
+package com.dailystar.dsacademy.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "Users")
+public class User {
+    @Field(name = "FirstName")
+    private String firstName;
+    @Field(name = "LastName")
+    private String lastName;
+    @Field(name = "DateOfBirth")
+    private LocalDate dateOfBirth;
+    @Field(name = "Gender")
+    private int gender;
+    @Field(name = "Occupation")
+    private String occupation;
+    @Field(name = "Organization")
+    private String organization;
+    @Field(name = "Email")
+    private String email;
+    @Field(name = "Department")
+    private String department;
+    @Field(name = "Mobile")
+    private String mobile;
+    @Field(name = "Locale")
+    private String locale;
+    @Field(name = "Notes")
+    private String notes;
+    @Field(name = "Body")
+    private String body;
+    @Field(name = "Address")
+    private String address;
+    @Field(name = "ProfileImage")
+    private String profileImage;
+    @Field(name = "LastLogInTime")
+    private LocalDateTime lastLogInTime;
+    @Field(name = "Roles")
+    private Set<String> roles = new HashSet<>();
+    @Field(name = "Active")
+    private boolean active;
+    @Field(name = "LogInCount")
+    private int loginCount;
+
+    public void addRole(final String role) {
+        this.roles.add(role);
+    }
+
+    public void addRoles(final List<String> roles) {
+        this.roles.addAll(roles);
+    }
+
+    public int incrementLoginCount() {
+        return this.loginCount + 1;
+    }
+}
