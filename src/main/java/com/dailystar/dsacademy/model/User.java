@@ -3,6 +3,8 @@ package com.dailystar.dsacademy.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,8 +17,12 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 @Document(collection = "Users")
-public class User {
+public class User
+{
+    @Id
+    private String id;
     @Field(name = "FirstName")
     private String firstName;
     @Field(name = "LastName")
@@ -24,7 +30,7 @@ public class User {
     @Field(name = "DateOfBirth")
     private LocalDate dateOfBirth;
     @Field(name = "Gender")
-    private int gender;
+    private String gender;
     @Field(name = "Occupation")
     private String occupation;
     @Field(name = "Organization")
@@ -53,6 +59,8 @@ public class User {
     private boolean active;
     @Field(name = "LogInCount")
     private int loginCount;
+    @Field(name = "Status")
+    private String status;
 
     public void addRole(final String role) {
         this.roles.add(role);
