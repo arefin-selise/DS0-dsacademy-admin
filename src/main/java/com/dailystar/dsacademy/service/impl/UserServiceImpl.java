@@ -1,6 +1,6 @@
 package com.dailystar.dsacademy.service.impl;
 
-import com.dailystar.dsacademy.dto.request.RegistrationDto;
+import com.dailystar.dsacademy.dto.request.UserRequestDto;
 import com.dailystar.dsacademy.dto.response.UserResponseDto;
 import com.dailystar.dsacademy.model.User;
 import com.dailystar.dsacademy.repository.UserRepository;
@@ -30,14 +30,14 @@ public class UserServiceImpl extends FilterApplier implements UserService
     }
 
     @Override
-    public User createUserRegistration(final RegistrationDto request)
+    public User createUserRegistration(final UserRequestDto request)
     {
         final User user = modelMapper.mapRegistrationDtoToUser(request);
         return userRepository.save(user);
     }
 
     @Override
-    public User updateUserProfile(final RegistrationDto request)
+    public User updateUserProfile(final UserRequestDto request)
     {
         final User user = modelMapper.mapRegistrationDtoToUser(request);
         user.setId(fetchUserProfilesByEmail(request.getEmail()).getId());

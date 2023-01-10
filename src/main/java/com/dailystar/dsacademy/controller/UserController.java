@@ -1,6 +1,6 @@
 package com.dailystar.dsacademy.controller;
 
-import com.dailystar.dsacademy.dto.request.RegistrationDto;
+import com.dailystar.dsacademy.dto.request.UserRequestDto;
 import com.dailystar.dsacademy.model.User;
 import com.dailystar.dsacademy.service.UserService;
 import org.springframework.context.annotation.Lazy;
@@ -21,13 +21,13 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<Object> userRegistration(@RequestBody RegistrationDto request)
+    public ResponseEntity<Object> userRegistration(@RequestBody UserRequestDto request)
     {
         return ResponseEntity.ok(userService.createUserRegistration(request));
     }
 
     @PostMapping("/profile/update")
-    public ResponseEntity<Object> updateUserProfile(@RequestBody RegistrationDto request)
+    public ResponseEntity<Object> updateUserProfile(@RequestBody UserRequestDto request)
     {
         return ResponseEntity.ok(userService.updateUserProfile(request));
     }

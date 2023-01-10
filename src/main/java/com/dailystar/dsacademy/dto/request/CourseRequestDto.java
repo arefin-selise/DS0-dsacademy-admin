@@ -1,17 +1,17 @@
-package com.dailystar.dsacademy.model;
+package com.dailystar.dsacademy.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
-@Document(collection = "Courses")
-public class Course
+public class CourseRequestDto implements Serializable
 {
 
 }
