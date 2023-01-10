@@ -22,7 +22,7 @@ import java.util.Set;
 public class User
 {
     @Id
-    private String userId;
+    private String id;
     @Field(name = "FirstName")
     private String firstName;
     @Field(name = "LastName")
@@ -82,9 +82,9 @@ public class User
     @Field(name = "LinkedInProfile")
     private String linkedInProfile;
     @Field(name = "Created")
-    private String created;
+    private LocalDateTime created;
     @Field(name = "Modified")
-    private String modified;
+    private LocalDateTime modified;
     public void addRole(final String role) {
         this.roles.add(role);
     }
