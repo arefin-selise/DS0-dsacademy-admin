@@ -13,5 +13,13 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class CategoryResponseDto implements Serializable
 {
-
+    private String categoryId;
+    private String name;
+    private String description;
+    private String body;
+    private String picture;
+    private String logo;
+    private int courseCount;
+    private String created;
+    private String modified;
 }
