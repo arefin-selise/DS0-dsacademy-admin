@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -42,6 +43,7 @@ public class UserServiceImpl extends FilterApplier implements UserService
     {
         final User user = modelMapper.mapUserRequestDtoToUser(request);
         user.setId(fetchUserProfilesByEmail(request.getEmail()).getId());
+        user.setModified(LocalDateTime.now());
         return userRepository.save(user);
     }
 

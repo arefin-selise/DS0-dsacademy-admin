@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -37,6 +38,7 @@ public class CourseServiceImpl extends FilterApplier implements CourseService
     {
         final Course course = modelMapper.mapCourseRequestDtoToCourse(request);
         course.setId(request.getCourseId());
+        course.setModified(LocalDateTime.now());
         return courseRepository.save(course);
     }
 

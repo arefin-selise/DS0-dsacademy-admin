@@ -38,16 +38,16 @@ public class UserResponseDto implements Serializable
     private String address;
     private LocalDateTime lastLogInTime;
     private Set<String> roles = new HashSet<>();
-    private boolean isActive;
+    private boolean active;
     private int loginCount;
     private String status;
     private String language;
     private List<String> badges;
-    private List<String> completedCourses;
+    private List<String> courses;
     private List<String> careerHistory;
     private List<String> academicHistory;
-    private boolean isVerified;
-    private String linkedInProfile;
+    private boolean verified;
+    private String linkedin;
     private LocalDateTime created;
     private LocalDateTime modified;
 }

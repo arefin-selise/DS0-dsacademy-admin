@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -38,6 +39,7 @@ public class CategoryServiceImpl extends FilterApplier implements CategoryServic
     {
         final Category category = modelMapper.mapCategoryRequestDtoToCategory(request);
         category.setId(request.getCategoryId());
+        category.setModified(LocalDateTime.now());
         return categoryRepository.save(category);
     }
 

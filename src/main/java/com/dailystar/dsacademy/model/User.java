@@ -61,8 +61,8 @@ public class User
     private LocalDateTime lastLogInTime;
     @Field(name = "Roles")
     private Set<String> roles = new HashSet<>();
-    @Field(name = "isActive")
-    private boolean isActive;
+    @Field(name = "Active")
+    private boolean active;
     @Field(name = "LogInCount")
     private int loginCount;
     @Field(name = "Status")
@@ -71,16 +71,16 @@ public class User
     private String language;
     @Field(name="Badges")
     private List<String> badges;
-    @Field(name="CompletedCourses")
-    private List<String> completedCourses;
+    @Field(name="Courses")
+    private List<String> courses;
     @Field(name="CareerHistory")
     private List<String> careerHistory;
     @Field(name="AcademicHistory")
     private List<String> academicHistory;
-    @Field(name = "IsVerified")
-    private boolean isVerified;
-    @Field(name = "LinkedInProfile")
-    private String linkedInProfile;
+    @Field(name = "Verified")
+    private boolean verified;
+    @Field(name = "Linkedin")
+    private String linkedin;
     @Field(name = "Created")
     private LocalDateTime created;
     @Field(name = "Modified")

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +21,6 @@ public class CategoryResponseDto implements Serializable
     private String picture;
     private String logo;
     private int courseCount;
-    private String created;
-    private String modified;
+    private LocalDateTime created;
+    private LocalDateTime modified;
 }
