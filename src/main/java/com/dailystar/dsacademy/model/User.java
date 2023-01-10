@@ -91,7 +91,6 @@ public class User
     public void addRoles(final List<String> roles) {
         this.roles.addAll(roles);
     }
-
     public int incrementLoginCount() {
         return this.loginCount + 1;
     }

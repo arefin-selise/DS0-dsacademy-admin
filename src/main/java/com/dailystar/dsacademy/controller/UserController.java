@@ -4,7 +4,6 @@ import com.dailystar.dsacademy.dto.request.RegistrationDto;
 import com.dailystar.dsacademy.model.User;
 import com.dailystar.dsacademy.service.UserService;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,10 +35,7 @@ public class UserController {
     @GetMapping( "/profile/{userId}")
     public ResponseEntity<User> viewUserProfileById(@PathVariable String userId)
     {
-        System.out.println(userId);
-        User response = userService.fetchUserProfilesById(userId);
-        System.out.println(response.getFirstName());
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(userService.fetchUserProfilesById(userId));
     }
 
     @GetMapping("/pending-user-list")

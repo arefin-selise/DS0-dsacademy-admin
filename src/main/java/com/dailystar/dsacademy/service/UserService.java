@@ -7,7 +7,8 @@ import com.dailystar.dsacademy.util.filter.SearchFilter;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService
+{
     User createUserRegistration(final RegistrationDto request);
     User updateUserProfile(final RegistrationDto request);
     User fetchUserProfilesById(final String userId);

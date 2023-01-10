@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
 
 public class FilterApplier extends QueryApplier
 {
-    public  static Query buildQuery(SearchFilter searchFilter, Class<?> searchClass) {
-        Query query = new Query();
+    public  static Query buildQuery(final SearchFilter searchFilter, final Class<?> searchClass) {
+        final Query query = new Query();
         FilterApplier.applyRestApiQueries(query, searchFilter, searchClass.getCanonicalName());
         return query;
     }
 
-    public static void applyRestApiQueries(Query query, SearchFilter restApiQueries, String className) {
+    public static void applyRestApiQueries(final Query query, final SearchFilter restApiQueries, final String className) {
         applySortQuery(query, restApiQueries);
         applySelectQuery(query, restApiQueries);
         applySearchQuery(query, restApiQueries, className);
@@ -24,22 +24,22 @@ public class FilterApplier extends QueryApplier
         applyPageSizeQuery(query, restApiQueries);
     }
 
-    public static void applyPageQuery(Query query, SearchFilter restApiQueries) {
+    public static void applyPageQuery(final Query query, final SearchFilter restApiQueries) {
         try {
             if (restApiQueries.getPage() != null) {
-                Integer pageQueryParam = restApiQueries.getPage();
-                long skip = pageQueryParam.longValue();
+                final Integer pageQueryParam = restApiQueries.getPage();
+                final long skip = pageQueryParam.longValue();
                 if (skip < 0) {
                     throw new NumberFormatException();
                 }
                 query.skip(skip);
             }
-        } catch (NumberFormatException pageParamExc) {
+        } catch (final NumberFormatException pageParamExc) {
             throw new RuntimeException("Page param must be greater than or equal to 0");
         }
     }
 
-    public static void applyPageSizeQuery(Query query, SearchFilter restApiQueries) {
+    public static void applyPageSizeQuery(final Query query, final SearchFilter restApiQueries) {
         try {
             if (restApiQueries.getPageSize() != null) {
                 int limit = restApiQueries.getPageSize();
@@ -53,21 +53,21 @@ public class FilterApplier extends QueryApplier
             } else {
                 query.limit(20);
             }
-        } catch (NumberFormatException pageParamExc) {
+        } catch (final NumberFormatException pageParamExc) {
             throw new RuntimeException("PageSize param must greater than or equal to 0");
         }
     }
 
-    public static void applySearchQuery(Query query, SearchFilter restApiQueries, String className) {
+    public static void applySearchQuery(final Query query, final SearchFilter restApiQueries, final String className) {
         if (restApiQueries.getQuery() == null) return;
         if (restApiQueries.getQuery().isEmpty()) return;
 
         try {
-            Map<String, String> typeMap = getClassFieldNameTypeMap(className, restApiQueries.getQuery().stream().map(QueryFilterDetails::getName).collect(Collectors.toSet()));
-            List<QueryFilterDetails> queryFilterDetails = restApiQueries.getQuery();
+            final Map<String, String> typeMap = getClassFieldNameTypeMap(className, restApiQueries.getQuery().stream().map(QueryFilterDetails::getName).collect(Collectors.toSet()));
+            final List<QueryFilterDetails> queryFilterDetails = restApiQueries.getQuery();
             for (QueryFilterDetails queryFilter : queryFilterDetails) {
                 if (typeMap.containsKey(queryFilter.getName())) {
-                    String typeName = typeMap.get(queryFilter.getName());
+                    final String typeName = typeMap.get(queryFilter.getName());
                     queryFilter.setType(typeName);
                     switch (SearchFieldType.valueOf(typeName)) {
                         case LOCALDATE -> applyLocalDateQuery(query, queryFilter);
@@ -77,7 +77,7 @@ public class FilterApplier extends QueryApplier
                     }
                 }
             }
-        } catch (Exception c) {
+        } catch (final Exception c) {
             if (c instanceof ClassNotFoundException) {
                 throw new RuntimeException(String.format("%s class not found for query", className));
             } else {
@@ -87,36 +87,36 @@ public class FilterApplier extends QueryApplier
 
     }
 
-    public static void applySelectQuery(Query query, SearchFilter restApiQueries) {
+    public static void applySelectQuery(final Query query, final SearchFilter restApiQueries) {
         if (restApiQueries.getSelect() != null) {
-            List<String> selectedFields = restApiQueries.getSelect();
+            final List<String> selectedFields = restApiQueries.getSelect();
             for (String selectedField : selectedFields) {
                 query.fields().include(selectedField);
             }
         }
     }
 
-    public static void applySortQuery(Query query, SearchFilter restApiQueries) {
+    public static void applySortQuery(final Query query, final SearchFilter restApiQueries) {
         try {
             if (restApiQueries.getSort() != null) {
-                String sortQueryParam = restApiQueries.getSort();
+                final String sortQueryParam = restApiQueries.getSort();
                 Sort.Direction sortDir =
                         sortQueryParam.charAt(0) == '-' ? Sort.Direction.DESC : Sort.Direction.ASC;
-                String sortBy = sortDir.equals(Sort.Direction.DESC) ? sortQueryParam.substring(1)
+                final String sortBy = sortDir.equals(Sort.Direction.DESC) ? sortQueryParam.substring(1)
                         : sortQueryParam;
 
                 query.with(Sort.by(sortDir, sortBy));
             }
-        } catch (IndexOutOfBoundsException subStringException) {
+        } catch (final IndexOutOfBoundsException subStringException) {
             throw new RuntimeException();
         }
     }
 
 
-    public static Map<String, String> getClassFieldNameTypeMap(String className, Set<String> fieldsNames) throws ClassNotFoundException {
-        Class<?> cls = Class.forName(className);
-        Field[] allFields = cls.getDeclaredFields();
-        Map<String, String> fieldNameToTypeMap = new HashMap<>();
+    public static Map<String, String> getClassFieldNameTypeMap(final String className, final Set<String> fieldsNames) throws ClassNotFoundException {
+        final Class<?> cls = Class.forName(className);
+        final Field[] allFields = cls.getDeclaredFields();
+        final Map<String, String> fieldNameToTypeMap = new HashMap<>();
         Arrays.stream(allFields)
                 .filter(data-> fieldsNames.contains(data.getName()))
                 .forEach(field -> {

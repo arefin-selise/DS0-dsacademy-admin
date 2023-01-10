@@ -10,7 +10,8 @@ import java.util.UUID;
 @Component
 public class ModelMapper
 {
-    public User mapRegistrationDtoToUser(final RegistrationDto dto) {
+    public User mapRegistrationDtoToUser(final RegistrationDto dto)
+    {
         return new User().setEmail(dto.getEmail())
                 .setFirstName(dto.getFirstName())
                 .setLastName(dto.getLastName())

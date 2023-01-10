@@ -11,7 +11,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class UserResponseDto implements Serializable {
+public class UserResponseDto implements Serializable
+{
     private String id;
     private String firstName;
     private String lastName;

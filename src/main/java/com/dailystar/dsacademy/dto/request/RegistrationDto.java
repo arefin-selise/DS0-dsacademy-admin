@@ -11,7 +11,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class RegistrationDto {
+public class RegistrationDto
+{
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
