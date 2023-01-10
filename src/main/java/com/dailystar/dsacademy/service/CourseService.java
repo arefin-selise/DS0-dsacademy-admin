@@ -9,7 +9,6 @@ public interface CourseService
 {
     Course createCourse(final CourseRequestDto request);
     Course updateCourse(final CourseRequestDto request);
-    Course fetchCourseByUserId(final String userId);
+    Course fetchCourseByCourseId(final String courseId);
     List<Course> fetchAllCourses();
-    List<Course> fetchAllCoursesByUserId(final String userId);
 }

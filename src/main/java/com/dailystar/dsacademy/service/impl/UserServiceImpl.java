@@ -23,6 +23,7 @@ public class UserServiceImpl extends FilterApplier implements UserService
 {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+
     public UserServiceImpl(final @Lazy UserRepository userRepository, final ModelMapper modelMapper)
     {
         this.userRepository = userRepository;
@@ -32,14 +33,14 @@ public class UserServiceImpl extends FilterApplier implements UserService
     @Override
     public User createUserRegistration(final UserRequestDto request)
     {
-        final User user = modelMapper.mapRegistrationDtoToUser(request);
+        final User user = modelMapper.mapUserRequestDtoToUser(request);
         return userRepository.save(user);
     }
 
     @Override
     public User updateUserProfile(final UserRequestDto request)
     {
-        final User user = modelMapper.mapRegistrationDtoToUser(request);
+        final User user = modelMapper.mapUserRequestDtoToUser(request);
         user.setId(fetchUserProfilesByEmail(request.getEmail()).getId());
         return userRepository.save(user);
     }

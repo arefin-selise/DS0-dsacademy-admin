@@ -85,12 +85,15 @@ public class User
     private LocalDateTime created;
     @Field(name = "Modified")
     private LocalDateTime modified;
+
     public void addRole(final String role) {
         this.roles.add(role);
     }
+
     public void addRoles(final List<String> roles) {
         this.roles.addAll(roles);
     }
+
     public int incrementLoginCount() {
         return this.loginCount + 1;
     }
