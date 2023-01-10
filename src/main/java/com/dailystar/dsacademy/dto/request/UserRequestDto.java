@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Accessors(chain = true)
 public class UserRequestDto implements Serializable
 {
+    private String userId;
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;

@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class UserResponseDto implements Serializable
 {
-    private String id;
+    private String  userId;
     private String firstName;
     private String lastName;
     private String email;

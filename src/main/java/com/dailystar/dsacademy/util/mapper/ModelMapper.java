@@ -20,6 +20,6 @@ public class ModelMapper
 
     public UserResponseDto mapUserToUserResponseDto(final User user)
     {
-        return new UserResponseDto().setId(user.getId() == null ? UUID.randomUUID().toString() : user.getId());
+        return new UserResponseDto().setUserId(user.getUserId() == null ? UUID.randomUUID().toString() : user.getUserId());
     }
 }
