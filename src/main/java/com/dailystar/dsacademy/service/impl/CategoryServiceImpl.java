@@ -52,6 +52,6 @@ public class CategoryServiceImpl extends FilterApplier implements CategoryServic
     @Override
     public List<Category> fetchAllCategories()
     {
-        return categoryRepository.findAllCategories().stream().toList();
+        return categoryRepository.findAllByIdIsNotNull().stream().toList();
     }
 }

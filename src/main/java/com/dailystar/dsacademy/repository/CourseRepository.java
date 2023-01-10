@@ -13,6 +13,5 @@ import java.util.Optional;
 public interface CourseRepository extends MongoRepository<Course, String>, CustomSearchRepository<Course>
 {
     Optional<Course> findById(final String courseId);
-    List<Course> findCoursesByUserId(final String userId);
-    List<Course> findAllCourses();
+    List<Course> findAllByIdIsNotNull();
 }

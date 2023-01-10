@@ -51,6 +51,6 @@ public class CourseServiceImpl extends FilterApplier implements CourseService
     @Override
     public List<Course> fetchAllCourses()
     {
-        return courseRepository.findAllCourses().stream().toList();
+        return courseRepository.findAllByIdIsNotNull().stream().toList();
     }
 }

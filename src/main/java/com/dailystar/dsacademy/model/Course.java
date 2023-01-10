@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class Course
     @Field(name ="Enrollment")
     private String enrollment;
     @Field(name ="CategoryId")
-    private int categoryId;
+    private UUID categoryId;
     @Field(name ="Name")
     private String name;
     @Field(name ="Description")

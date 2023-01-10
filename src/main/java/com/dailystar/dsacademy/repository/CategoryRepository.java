@@ -13,6 +13,5 @@ import java.util.Optional;
 public interface CategoryRepository extends MongoRepository<Category, String>, CustomSearchRepository<Category>
 {
     Optional<Category> findById(final String categoryId);
-    Category findCategoriesByCategoryId(final String courseId);
-    List<Category> findAllCategories();
+    List<Category> findAllByIdIsNotNull();
 }

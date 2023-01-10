@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class CourseRequestDto implements Serializable
 {
     private String courseId;
     private String enrollment;
-    private int categoryId;
+    private UUID categoryId;
     private String name;
     private String description;
     private String picture;
