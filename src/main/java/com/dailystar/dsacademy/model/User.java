@@ -22,7 +22,7 @@ import java.util.Set;
 public class User
 {
     @Id
-    private String userId;
+    private String id;
     @Field(name = "FirstName")
     private String firstName;
     @Field(name = "LastName")
@@ -85,12 +85,15 @@ public class User
     private String created;
     @Field(name = "Modified")
     private String modified;
+
     public void addRole(final String role) {
         this.roles.add(role);
     }
+
     public void addRoles(final List<String> roles) {
         this.roles.addAll(roles);
     }
+
     public int incrementLoginCount() {
         return this.loginCount + 1;
     }

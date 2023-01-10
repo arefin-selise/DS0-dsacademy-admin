@@ -10,7 +10,8 @@ import java.util.Optional;
 
 @Repository
 @Lazy
-public interface UserRepository extends MongoRepository<User, String>, CustomSearchRepository<User> {
+public interface UserRepository extends MongoRepository<User, String>, CustomSearchRepository<User>
+{
     Optional<User> findById(final String userId);
     Optional<User> findByEmail(final String email);
     List<User> findAllByStatus(final String status);

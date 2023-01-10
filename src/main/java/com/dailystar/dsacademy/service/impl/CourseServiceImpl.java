@@ -3,9 +3,7 @@ package com.dailystar.dsacademy.service.impl;
 import com.dailystar.dsacademy.dto.request.CourseRequestDto;
 import com.dailystar.dsacademy.model.Course;
 import com.dailystar.dsacademy.repository.CourseRepository;
-import com.dailystar.dsacademy.repository.UserRepository;
 import com.dailystar.dsacademy.service.CourseService;
-import com.dailystar.dsacademy.service.UserService;
 import com.dailystar.dsacademy.util.filter.FilterApplier;
 import com.dailystar.dsacademy.util.mapper.ModelMapper;
 import lombok.extern.log4j.Log4j2;
@@ -30,30 +28,27 @@ public class CourseServiceImpl extends FilterApplier implements CourseService
     @Override
     public Course createCourse(final CourseRequestDto request)
     {
-        return null;
+        final Course course = modelMapper.mapCourseRequestDtoToCourse(request);
+        return courseRepository.save(course);
     }
 
     @Override
     public Course updateCourse(final CourseRequestDto request)
     {
-        return null;
+        final Course course = modelMapper.mapCourseRequestDtoToCourse(request);
+        course.setId(request.getCourseId());
+        return courseRepository.save(course);
     }
 
     @Override
-    public Course fetchCourseByUserId(final String userId)
+    public Course fetchCourseByCourseId(String courseId)
     {
-        return null;
+        return courseRepository.findById(courseId).orElseThrow(() -> new RuntimeException("Course details not found"));
     }
 
     @Override
     public List<Course> fetchAllCourses()
     {
-        return null;
-    }
-
-    @Override
-    public List<Course> fetchAllCoursesByUserId(final String userId)
-    {
-        return null;
+        return courseRepository.findAllCourses().stream().toList();
     }
 }
