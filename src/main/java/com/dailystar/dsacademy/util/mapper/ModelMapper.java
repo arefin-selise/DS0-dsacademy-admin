@@ -69,7 +69,7 @@ public class ModelMapper
     {
         return new Course()
                 .setId(dto.getCourseId() == null ? UUID.randomUUID().toString() : dto.getCourseId())
-                .setEnrollment(dto.getEnrollment())
+                .setEnrollment(dto.isEnrollment())
                 .setCategoryId(dto.getCategoryId())
                 .setName(dto.getName())
                 .setDescription(dto.getDescription())

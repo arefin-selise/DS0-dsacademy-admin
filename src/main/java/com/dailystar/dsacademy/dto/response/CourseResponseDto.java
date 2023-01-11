@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class CourseResponseDto implements Serializable
 {
     private String courseId;
-    private String enrollment;
+    private boolean enrollment;
     private int categoryId;
     private String name;
     private String description;

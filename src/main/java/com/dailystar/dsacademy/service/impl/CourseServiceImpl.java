@@ -37,7 +37,6 @@ public class CourseServiceImpl extends FilterApplier implements CourseService
     public Course updateCourse(final CourseRequestDto request)
     {
         final Course course = modelMapper.mapCourseRequestDtoToCourse(request);
-        course.setId(request.getCourseId());
         course.setModified(LocalDateTime.now());
         return courseRepository.save(course);
     }

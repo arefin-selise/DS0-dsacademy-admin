@@ -16,7 +16,7 @@ import java.util.UUID;
 public class CourseRequestDto implements Serializable
 {
     private String courseId;
-    private String enrollment;
+    private boolean enrollment;
     private UUID categoryId;
     private String name;
     private String description;

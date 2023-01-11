@@ -21,7 +21,7 @@ public class Course
     @Id
     private String id;
     @Field(name ="Enrollment")
-    private String enrollment;
+    private boolean enrollment=false;
     @Field(name ="CategoryId")
     private UUID categoryId;
     @Field(name ="Name")
